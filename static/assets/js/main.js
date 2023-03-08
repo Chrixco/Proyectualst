@@ -4,6 +4,29 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+const logo = document.getElementById("logo");
+
+function rotateLogo() {
+  logo.classList.add("rotate");
+  setTimeout(() => {
+    logo.removeEventListener("click", rotateLogo);
+  }, 2000); // Wait for the animation to complete
+}
+
+logo.addEventListener("click", rotateLogo);
+
+window.addEventListener("load", function() {
+  const loader = document.querySelector(".loader");
+  const loaderImg = loader.querySelector("img");
+  loaderImg.addEventListener("animationend", function() {
+    loader.classList.add("hidden");
+    setTimeout(function() {
+      loader.style.display = "none";
+    }, 1000);
+  }); // Wait for the animation to complete
+});
+
+
 (function($) {
 
 	// Settings.
