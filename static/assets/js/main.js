@@ -18,12 +18,25 @@ logo.addEventListener("click", rotateLogo);
 window.addEventListener("load", function() {
   const loader = document.querySelector(".loader");
   const loaderImg = loader.querySelector("img");
-  loaderImg.addEventListener("animationend", function() {
-    loader.classList.add("hidden");
-    setTimeout(function() {
-      loader.style.display = "none";
-    }, 1000);
-  }); // Wait for the animation to complete
+  if (document.readyState === "complete") {
+    loaderImg.addEventListener("animationend", function() {
+      loader.classList.add("hidden");
+      setTimeout(function() {
+        loader.style.display = "none";
+      }, 1000);
+    }); // Wait for the animation to complete
+  } else {
+    loaderImg.style.animationIterationCount = "infinite"; // Keep spinning
+    window.addEventListener("load", function() {
+      loaderImg.removeEventListener("animationiteration", rotateLoader);
+      loaderImg.addEventListener("animationend", function() {
+        loader.classList.add("hidden");
+        setTimeout(function() {
+          loader.style.display = "none";
+        }, 1000);
+      }); // Wait for the animation to complete
+    });
+  }
 });
 
 
