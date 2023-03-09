@@ -40,6 +40,9 @@ window.addEventListener("load", function() {
 });
 
 
+
+
+
 (function($) {
 
 	// Settings.
@@ -792,4 +795,7 @@ window.addEventListener("load", function() {
 
 					});
 
+
+
 })(jQuery);
+
